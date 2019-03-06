@@ -5,6 +5,11 @@ import javax.swing.*;
 
 public class RPGFinals extends Panel{
     static String name = " ";
+    static String pickColor = " ";
+    static String color = " ";
+    //------------EYES----SUIT----ITEMS
+    static Color color1, color2, color3;
+    
     public RPGFinals(){
         this.setBackground(Color.WHITE);
     } 
@@ -91,6 +96,69 @@ public class RPGFinals extends Panel{
         a.setColor(new Color(65, 26, 9));
         a.drawString("                              Hello, "+name+"!", 30, 30);
     }
+    public static Color changeEyes(String color1){
+        switch(color1){
+            case "White":
+                return Color.white;
+                
+            case "Gray":
+                return Color.gray;
+                
+            case "Black":
+                return Color.black;
+                
+            case "Blue":
+                return Color.blue;
+                
+            case "Green":
+                return Color.green;
+                
+            case "Yellow":
+                return Color.yellow;
+                
+            case "Orange":
+                return Color.orange;
+                
+            case "red":
+                return Color.red;
+                
+            default:
+                break;
+        }    return null;          
+    }
+
+    
+    public static Color changeSuit(String color2){
+        switch(color2){
+            case "White":
+                return Color.white;
+                
+            case "Gray":
+                return Color.gray;
+                
+            case "Black":
+                return Color.black;
+                
+            case "Blue":
+                return Color.blue;
+                
+            case "Green":
+                return Color.green;
+                
+            case "Yellow":
+                return Color.yellow;
+                
+            case "Orange":
+                return Color.orange;
+                
+            case "red":
+                return Color.red;
+                
+            default:
+                break;
+        }    return null;   
+    }
+    
     public static void main(String[] args) {
         JFrame frame = new JFrame(" CREATE YOUR AVATAR");
         RPGFinals panel = new RPGFinals();
@@ -104,6 +172,13 @@ public class RPGFinals extends Panel{
         name = JOptionPane.showInputDialog( "NAME YOUR AVATAR: ");
         JOptionPane.showMessageDialog(null, " Hello, " + name + "!");
         
+        String[] pickColor = {"White", "Gray", "Black", "Blue", "Green", "Yellow", "Orange", "Red"};
+        String eyes = (String)JOptionPane.showInputDialog(null, "What Color is your avatar's Eyes?: ","Colors",JOptionPane.QUESTION_MESSAGE,null,pickColor,pickColor[0]);
+        Color color1 = changeEyes(eyes);
+        
+        
+        String suit = (String) JOptionPane.showInputDialog(null,"What Color is your avatar's suit?:","Colors",JOptionPane.QUESTION_MESSAGE,null,pickColor,pickColor[0]);
+        Color color2 = changeSuit(suit);
     }
     
 }
