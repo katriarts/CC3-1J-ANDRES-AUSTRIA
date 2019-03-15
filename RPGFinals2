@@ -1,0 +1,193 @@
+package rpgfinals2;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class RPGFinals2 extends Panel{
+    static String name,gender, avatar, shape;
+    static Color color1;
+    
+    public RPGFinals2(){        
+        this.setBackground(Color.DARK_GRAY);
+    }
+    public void paint(Graphics a){
+        //grid lang po...UwU
+        a.setColor(Color.lightGray);
+        for( int i=0; i<getWidth(); i+=25){
+            a.drawLine(i, 0, i, getHeight());
+            a.drawLine(0, i, getWidth(), i);
+        }
+        /**character shape*/
+        if(shape == "Round"){
+                /**arms*/
+                a.setColor(color1);
+                a.fillRoundRect(175,330, 40, 10, 5, 5);//left
+                a.fillRoundRect(335, 330, 40, 10, 5, 5);//right
+                a.setColor(color1.darker());
+                a.fillRect(195,330, 20, 10);//left shadow
+                a.fillRect(335, 330, 20, 10);//right shadow
+                /**legs*/
+                a.setColor(color1);
+                a.fillRoundRect(235, 380, 10, 40, 5, 5);//left
+                a.fillRoundRect(300, 380, 10, 40, 5, 5);//right
+                a.setColor(color1.darker());
+                a.fillRect(235, 380, 10, 20);//left shadow
+                a.fillRect(300, 380, 10, 20);//right shadow
+                /**body*/
+                a.setColor(color1);
+                a.fillOval(200, 250, 150, 150);
+        }else if(shape == "Triangle"){
+                /**arms*/
+                a.setColor(color1);
+                a.fillRoundRect(175,335, 40, 10, 5, 5);//left
+                a.fillRoundRect(335, 335, 40, 10, 5, 5);//right
+                a.setColor(color1.darker());
+                a.fillRect(200,335, 20, 10);//left shadow
+                a.fillRect(330, 335, 20, 10);//right shadow
+                /**legs*/
+                a.setColor(color1);
+                a.fillRoundRect(230, 380, 10, 40, 5, 5);//left
+                a.fillRoundRect(305, 380, 10, 40, 5, 5);//right
+                a.setColor(color1.darker());
+                a.fillRect(230, 380, 10, 20);//left shadow
+                a.fillRect(305, 380, 10, 20);//right shadow
+                /**body*/
+                a.setColor(color1);
+                int[] b = {280, 175, 370};
+                int[] c = {220, 390,390};
+                a.fillPolygon(b, c, 3);
+        }else if(shape == "Square"){
+                /**arms*/
+                a.setColor(color1);
+                a.fillRoundRect(170,335, 40, 10, 5, 5);//left
+                a.fillRoundRect(340, 335, 40, 10, 5, 5);//right
+                a.setColor(color1.darker());
+                a.fillRect(195,335, 20, 10);//left shadow
+                a.fillRect(335, 335, 20, 10);//right shadow            
+                /**legs*/
+                a.setColor(color1);
+                a.fillRoundRect(230, 390, 10, 40, 5, 5);//left
+                a.fillRoundRect(305, 390, 10, 40, 5, 5);//right
+                a.setColor(color1.darker());
+                a.fillRect(230, 390, 10, 20);//left shadow
+                a.fillRect(305, 390, 10, 20);//right shadow
+                /**body*/
+                a.setColor(color1);   
+                a.fillRect(200, 250, 150, 150);
+        }
+        /**eyebrows*/
+        a.setColor(Color.black.brighter());
+        a.fillOval(220, 280, 35, 10);//left
+        a.fillOval(295, 280, 35, 10);//right
+        /**eyes*/
+        a.setColor(Color.WHITE);
+        a.fillOval(215, 300, 45, 45);//left
+        a.fillOval(290, 300, 45, 45);//right
+        /**pupils*/
+        a.setColor(Color.black.brighter());
+        a.fillOval(230, 315, 15, 15);//left
+        a.fillOval(305, 315, 15, 15);//right
+        /**mouth*/
+        a.setColor(new Color(238, 62, 62));
+        a.fillArc(260, 330, 30, 35, 180, 180);
+        /**teeth*/
+        a.setColor(Color.WHITE);
+        a.fillArc(267, 340, 15, 15, 180, 180);
+        /**blush*/
+        a.setColor(new Color(185, 7,7));
+        a.drawLine(225, 346, 220, 351);//left1
+        a.drawLine(230, 346, 225, 351);//left2
+        a.drawLine(235, 346, 230, 351);//left3
+        a.drawLine(240, 346, 235, 351);//left4
+        a.drawLine(245, 346, 240, 351);//left5
+        a.drawLine(305, 346, 300, 351);//right1
+        a.drawLine(310, 346, 305, 351);//right2
+        a.drawLine(315, 346, 310, 351);//right3
+        a.drawLine(320, 346, 315, 351);//right4
+        a.drawLine(325, 346, 320, 351);//right5 
+  
+        /**character class*/
+        if(avatar == "Wizard"){
+            a.fillRoundRect(200, 260, 150, 5, 5, 5);
+        }else if(avatar == "Knight"){
+            
+        }else if(avatar == "Witch"){
+            
+        }else if(avatar == "Mage"){
+            
+        }
+        
+        
+        
+        /** Header: for the name or drawString output.*/
+        a.setColor(new Color(213, 213, 213));
+        a.fillRect(100, 5, 400, 40);
+        a.setColor(new Color(40, 38, 39));
+        a.drawRect(100, 5, 400, 40);
+        /** for the header output of class and name.*/
+        a.setFont(new Font("DomCasual BT", Font.BOLD, 20));
+        a.setColor(new Color(65, 26, 9));
+//        a.drawString("                              Hello, "+avatar+" "+name+"!" +x +"bbbbb"+y, 30, 30);
+        a.drawString("                              Hello, "+avatar+" "+name+"!", 30, 30);
+
+    }
+
+    private static Color changeComplex(String color1) {
+        switch(color1){
+            case "Fair": return new Color(251, 233, 219);
+            case "Tanned": return new Color(237, 175, 126);
+            case "Dark": return new Color(208, 155, 109);
+            default: break;
+        } return null;
+    }
+    
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("CREATE YOUR AVATAR");
+        RPGFinals2 panel = new RPGFinals2();
+        
+        /** user inputs*/
+//        name = JOptionPane.showInputDialog("Name Your Avatar: ");
+//        JOptionPane.showMessageDialog(null, " Hello, "+name+"!");
+//        
+//        /**character gender*/
+        String[] pickGender = {"Male","Female"};
+        String charGender = (String)JOptionPane.showInputDialog(null,"What is your Avatar's Gender?","Gender", JOptionPane.QUESTION_MESSAGE,null,pickGender, pickGender[0]);
+        gender = charGender;
+        
+        if(charGender == "Male"){
+            String[] pickClass1 = {"Wizard", "Knight"};
+            String charClass = (String)JOptionPane.showInputDialog(null,"What is your Avatar's Class?:", "Avatar Class", JOptionPane.QUESTION_MESSAGE,null, pickClass1, pickClass1[0]);
+            avatar = charClass;
+            switch(avatar){
+                case "Wizard": System.out.print("Wizard ");
+                case "Warrior": System.out.print("Warrior ");
+            }
+        } else if(charGender == "Female"){
+            String[] pickClass2 = {"Witch", "Mage"};
+            String charClass = (String)JOptionPane.showInputDialog(null,"What is your Avatar's Class?:", "Avatar Class", JOptionPane.QUESTION_MESSAGE,null, pickClass2, pickClass2[0]);
+            avatar = charClass;
+            switch(avatar){
+                case "Witch": System.out.print("Witch ");
+                case "Mage": System.out.print("Mage ");
+            }
+        }
+//        
+//        
+        /**character shape*/
+       String[] pickShape = {"Round", "Triangle", "Square"};
+        String charShape = (String) JOptionPane.showInputDialog(null, "Choose a shape?: ","SHAPES", JOptionPane.QUESTION_MESSAGE, null, pickShape, pickShape[0]);
+        shape = charShape;
+        
+        /**character complexion*/
+        String[] pickColor1 = {"Fair", "Tanned","Dark"};
+        String complexion = (String) JOptionPane.showInputDialog(null, "What is your Avatar's Complexion?: ", "COMPLEXION", JOptionPane.QUESTION_MESSAGE, null, pickColor1, pickColor1[0]);
+        color1 = changeComplex(complexion);
+        
+    frame.add(panel);
+    frame.setSize(600, 700);
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    
+    
+}
