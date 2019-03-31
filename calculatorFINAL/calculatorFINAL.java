@@ -1,10 +1,34 @@
 package calculatorFINAL;
+
+import java.awt.event.ActionListener;
+import java.text.*;
 public class calculatorFINAL extends javax.swing.JFrame {
 
     public calculatorFINAL() {
         initComponents();
     }
 
+    calculatorModel theModel = new calculatorModel();
+    String operand="";
+    
+    public void getOperand(javax.swing.JButton button){
+        operand+=button.getText();
+        theModel.setNumber(operand);
+        input.setText(operand);
+    }
+    
+    private void getOperator(int operator){
+        theModel.setOperator(operator);
+        operand="";
+    }
+    
+    private void compute(){
+        DecimalFormat dec = new DecimalFormat("###,###.##");
+        theModel.compute();
+        operand ="";
+        input.setText(dec.format(theModel.getResult())+"");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -20,9 +44,9 @@ public class calculatorFINAL extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         input = new javax.swing.JTextField();
-        mc = new javax.swing.JButton();
-        mr = new javax.swing.JButton();
-        ms = new javax.swing.JButton();
+        sin = new javax.swing.JButton();
+        cos = new javax.swing.JButton();
+        tan = new javax.swing.JButton();
         c = new javax.swing.JButton();
         sqrt = new javax.swing.JButton();
         backspace = new javax.swing.JButton();
@@ -69,18 +93,38 @@ public class calculatorFINAL extends javax.swing.JFrame {
 
         input.setBackground(new java.awt.Color(204, 204, 204));
         input.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputActionPerformed(evt);
+            }
+        });
 
-        mc.setBackground(new java.awt.Color(204, 255, 204));
-        mc.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        mc.setText("sin(");
+        sin.setBackground(new java.awt.Color(204, 255, 204));
+        sin.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        sin.setText("sin");
+        sin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sinActionPerformed(evt);
+            }
+        });
 
-        mr.setBackground(new java.awt.Color(204, 255, 204));
-        mr.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        mr.setText("cos(");
+        cos.setBackground(new java.awt.Color(204, 255, 204));
+        cos.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        cos.setText("cos");
+        cos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cosActionPerformed(evt);
+            }
+        });
 
-        ms.setBackground(new java.awt.Color(204, 255, 204));
-        ms.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        ms.setText("tan(");
+        tan.setBackground(new java.awt.Color(204, 255, 204));
+        tan.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        tan.setText("tan");
+        tan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanActionPerformed(evt);
+            }
+        });
 
         c.setBackground(new java.awt.Color(204, 255, 204));
         c.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -103,6 +147,11 @@ public class calculatorFINAL extends javax.swing.JFrame {
         backspace.setBackground(new java.awt.Color(204, 255, 204));
         backspace.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         backspace.setText("<X");
+        backspace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backspaceActionPerformed(evt);
+            }
+        });
 
         nine.setBackground(new java.awt.Color(204, 255, 204));
         nine.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -271,11 +320,11 @@ public class calculatorFINAL extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(mc, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mr, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ms, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(four, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -313,9 +362,9 @@ public class calculatorFINAL extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(mc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mr, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ms, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(sin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(backspace, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,142 +407,159 @@ public class calculatorFINAL extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+zero.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+zero.getText();
+//        input.setText(enterNumber);
+        getOperand(zero);
     }//GEN-LAST:event_zeroActionPerformed
 
     private void sqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sqrtActionPerformed
-        // TODO add your handling code here:
+        getOperator(8);
     }//GEN-LAST:event_sqrtActionPerformed
 
     private void sevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+seven.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+seven.getText();
+//        input.setText(enterNumber);
+        getOperand(seven);
     }//GEN-LAST:event_sevenActionPerformed
 
     private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
-        // TODO add your handling code here:
-        input.setText("");
+//        input.setText("");
+        operand="";
+        theModel.setOperator(0);
+        theModel.setResult(0);
+        input.setText("0");
     }//GEN-LAST:event_cActionPerformed
 
     private void eightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightActionPerformed
         // TODO add your handling code here:
-        String enterNumber = input.getText()+eight.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+eight.getText();
+//        input.setText(enterNumber);
+        getOperand(eight);
     }//GEN-LAST:event_eightActionPerformed
 
     private void nineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+nine.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+nine.getText();
+//        input.setText(enterNumber);
+        getOperand(nine);
     }//GEN-LAST:event_nineActionPerformed
 
     private void fourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+four.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+four.getText();
+//        input.setText(enterNumber);
+        getOperand(four);
     }//GEN-LAST:event_fourActionPerformed
 
     private void fiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+five.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+five.getText();
+//        input.setText(enterNumber);
+        getOperand(five);
     }//GEN-LAST:event_fiveActionPerformed
 
     private void sixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+six.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+six.getText();
+//        input.setText(enterNumber);
+        getOperand(six);
     }//GEN-LAST:event_sixActionPerformed
 
     private void oneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+one.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+one.getText();
+//        input.setText(enterNumber);
+        getOperand(one);
     }//GEN-LAST:event_oneActionPerformed
 
     private void twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+two.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+two.getText();
+//        input.setText(enterNumber);
+        getOperand(two);
     }//GEN-LAST:event_twoActionPerformed
 
     private void threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+three.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+three.getText();
+//        input.setText(enterNumber);
+        getOperand(three);
     }//GEN-LAST:event_threeActionPerformed
 
     private void decimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalActionPerformed
-        // TODO add your handling code here:
-        String enterNumber = input.getText()+ decimal.getText();
-        input.setText(enterNumber);
+//        String enterNumber = input.getText()+ decimal.getText();
+//        input.setText(enterNumber);
+        getOperand(decimal);
     }//GEN-LAST:event_decimalActionPerformed
 
     private void divideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideActionPerformed
-        // TODO add your handling code here:
 //        number1 = Double.parseDouble(input.getText());
 //        input.setText("");
 //        operations = "/";
-        input.setText(input.getText()+"/");
+//        input.setText(input.getText()+"/");
+        getOperator(4);
     }//GEN-LAST:event_divideActionPerformed
 
     private void multiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyActionPerformed
-        // TODO add your handling code here:
 //        number1 = Double.parseDouble(input.getText());
 //        input.setText("");
 //        operations = "/";
-        input.setText(input.getText()+"*");
-        
+//        input.setText(input.getText()+"*");
+        getOperator(3);
     }//GEN-LAST:event_multiplyActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
-        input.setText(input.getText()+"+");
-//        compute();
+//        input.setText(input.getText()+"+");
+        getOperator(1);
     }//GEN-LAST:event_addActionPerformed
 
     private void subtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtractActionPerformed
-        // TODO add your handling code here:
-        input.setText(input.getText()+"-");
-//        equalsActionPerformed();
+//        input.setText(input.getText()+"-");
+        getOperator(2);
     }//GEN-LAST:event_subtractActionPerformed
 
+
     private void equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsActionPerformed
-//        equals.addActionListener(equalsActionPerformed);
+//        input.setText(input.getText()+"=");
+//        equals.addActionListener((ActionListener) equals);
+        compute();
     }//GEN-LAST:event_equalsActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
+        // TODO add your handling code here:
+//        float result = (float) 0.0;
+//        input.setText(Float.toString(result));
+    }//GEN-LAST:event_inputActionPerformed
+
+    private void cosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cosActionPerformed
+        // TODO add your handling code here:
+//        String enterNumber = input.getText()+ cos.getText();
+//        input.setText(enterNumber);
+        getOperator(6);
+    }//GEN-LAST:event_cosActionPerformed
+
+    private void sinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sinActionPerformed
+        // TODO add your handling code here:
+//        String enterNumber = input.getText()+ sin.getText();
+//        input.setText(enterNumber);
+        getOperator(5);
+    }//GEN-LAST:event_sinActionPerformed
+
+    private void tanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanActionPerformed
+        // TODO add your handling code here:
+//        String enterNumber = input.getText()+ tan.getText();
+//        input.setText(enterNumber);
+        getOperator(7);
+    }//GEN-LAST:event_tanActionPerformed
+
+    private void backspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backspaceActionPerformed
+        // TODO add your handling code here:
+        if(operand.length()>1){
+            operand = operand.substring(0, operand.length()-1);
+            theModel.setNumber(operand);
+            input.setText(operand);
+        }
+        else{
+            operand="";
+            theModel.setNumber(operand);
+            input.setText("0");
+        }
+    }//GEN-LAST:event_backspaceActionPerformed
     
 //    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(calculatorFINAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(calculatorFINAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(calculatorFINAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(calculatorFINAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
 //                new calculatorFINAL().setVisible(true);
@@ -505,6 +571,7 @@ public class calculatorFINAL extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JButton backspace;
     private javax.swing.JButton c;
+    private javax.swing.JButton cos;
     private javax.swing.JButton decimal;
     private javax.swing.JButton divide;
     private javax.swing.JButton eight;
@@ -522,16 +589,15 @@ public class calculatorFINAL extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton mc;
-    private javax.swing.JButton mr;
-    private javax.swing.JButton ms;
     private javax.swing.JButton multiply;
     private javax.swing.JButton nine;
     private javax.swing.JButton one;
     private javax.swing.JButton seven;
+    private javax.swing.JButton sin;
     private javax.swing.JButton six;
     private javax.swing.JButton sqrt;
     private javax.swing.JButton subtract;
+    private javax.swing.JButton tan;
     private javax.swing.JButton three;
     private javax.swing.JButton two;
     private javax.swing.JButton zero;

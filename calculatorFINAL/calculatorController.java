@@ -1,11 +1,7 @@
 package calculatorFINAL;
 import java.awt.event.*;
 public class calculatorController {
-//    private float number1 = 0;
-//    private String operator = "";
-//    private boolean start = true;
-    
-    
+
     private calculatorModel theModel;
     private calculatorFINAL theView;
     
@@ -14,17 +10,20 @@ public class calculatorController {
         this.theModel = theModel;
         this.theView = theView;   
     
-    
+//        this.theView.addCalculateListener(new CalculateListener());
+//        this.theView.equalsActionPerformed(new equalsActionPerformed());
+
     }
 
-    
-    class ActionPerformed implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            float number1, number2 = 0;
+//    class CalculateListener implements ActionListener{
+
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            float number1 = (float) 0.0, number2 = (float) 0.0, result = (float) 0.0;
+         
             
-            
-        }
-    }
-    
-    
+//            theModel.compute(number1, number2, result);
+//            theView.equals(theModel.getResult());
+//        }
+//    }    
 }
