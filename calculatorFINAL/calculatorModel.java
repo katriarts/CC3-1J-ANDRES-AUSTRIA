@@ -42,50 +42,17 @@ public class calculatorModel {
                 break;
             //trigonometric function
             case 5:
-                result = (float) Math.toRadians(Math.sin(number1));
+                result = (float) Math.sin(Math.toRadians(number1));//(float) Math.toRadians(Math.sin(number1));
                 break;
             case 6:
-                result = (float) Math.toRadians(Math.cos(number1));
+                result = (float) Math.cos(Math.toRadians(number1));
                 break;
             case 7:
-                result = (float) Math.toRadians(Math.tan(number1));
+                result = (float) Math.tan(Math.toRadians(number1));
                 break;
             //square root
             case 8:
                 result = (float) Math.sqrt(number1);
         } number1 = result;
     }
-    
-    
-//    private String operator;
-//    public void compute(float number1,float number2, float result){
-//        
-//        if(operator == "+") 
-//            result = number1 + number2;
-//        else if(operator == "-") 
-//            result = number1 - number2;
-//        else if(operator == "*") 
-//            result = number1 * number2;
-//        else if(operator == "/"){
-//            if(number2 == 0){result = 0;}
-//            else result = number1 / number2;
-//        }
-//        //trigonometric function
-//        else if(operator == "sin")
-//            result = (float) Math.toRadians(Math.sin(number1));
-//        else if(operator == "cos")
-//            result = (float) Math.toRadians(Math.cos(number1));
-//        else if(operator == "tan")
-//            result = (float) Math.toRadians(Math.tan(number1));
-//        //square root
-//        else if(operator == "sqrt")
-//            result = (float) Math.sqrt(number1);
-//        
-//        }
-//    
-//    public String getResult(){
-//        return operator;
-//    }
-    
-    
 }
